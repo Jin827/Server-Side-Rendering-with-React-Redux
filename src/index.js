@@ -8,13 +8,11 @@ const app = express();
 app.use(express.static('public'));
 app.get('/', (req, res) => {
   const content = renderToString(<Home />);
-  // script client side bundle.js (public)
-  // server side bundle.js (build) which could have a sensitive data is not open to public
   const html = `
     <html>
       <head></head>
       <body>
-        <div>${content}</div>
+        <div id="root">${content}</div>
         <script src="bundle.js"></script>
       </body>
     </html>
