@@ -1,1 +1,1 @@
-console.log('Hi Client Startup Point!!');
+console.log('Hi Client Entry Point!!');
