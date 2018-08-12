@@ -1,10 +1,16 @@
 // A single function that renders the react app and return it as a string
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Home from '../client/components/Home';
+import { StaticRouter } from 'react-router-dom';
+import Routes from '../client/Routes';
 
-export default () => {
-  const content = renderToString(<Home />);
+// StaticRouter needs to be told exactly what the current path is unlike BrowserRouter which can look directly at the browser's address bar
+export default (req) => {
+  const content = renderToString(
+    <StaticRouter location={req.path} context={{}}>
+      <Routes />
+    </StaticRouter>
+  );
 
   return `
     <html>
